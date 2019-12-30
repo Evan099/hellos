@@ -48,5 +48,29 @@
     <bean id="productInfo" class="imooc.demo4.ProductInfo"/>
 
 
+    <!--复杂类型的输入(集合类型)-->
+    <bean id="collectionBean" class="imooc.demo5.CollectionBean">
+        <!--数组类型-->
+        <property name="arrs">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+        <!--list集合-->
+        <property name="list">
+            <list>
+                <!--普通类型的值-->
+                <value>111</value>
+                <value>222</value>
+                <value>333</value>
+                <!--对象类型的值-->
+                <!--<ref></ref>-->
+            </list>
+        </property>
+
+    </bean>
+
 
 </beans>
