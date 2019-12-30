@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="userServiceId" class="imooc.demo1.UserServiceImpl" >
+        <property name="name" value="李四"></property>
+    </bean>
+
+    <!--bean的构造方法的属性注入-->
+    <bean id="user" class="imooc.demo4.User">
+        <constructor-arg name="name" value="李蟠辰"/>
+        <constructor-arg name="age" value="26"/>
+    </bean>
+
+    <!--bean的set方法属性注入,ref是引入其他bean的名字-->
+    <bean id="person" class="imooc.demo4.Person">
+        <property name="name" value="张露"></property>
+        <property name="age" value="24"></property>
+        <property name="cat" ref="cat"></property>
+    </bean>
+
+    <bean id="cat" class="imooc.demo4.Cat">
+        <property name="name" value="ketty" />
+    </bean>
+
+
+    <!--bean的p名称空间的属性注入-->
+    <bean id="person2" class="imooc.demo4.Person" p:name="张露p" p:age="24" p:cat-ref="cat2"/>
+
+    <bean id="cat2" class="imooc.demo4.Cat" p:name="小黄"/>
+
+
+    <!--spel的属性注入-->
+
+    <bean id="category" class="imooc.demo4.Category">
+        <property name="name" value="#{'手机'}"/>
+    </bean>
+
+    <bean id="product" class="imooc.demo4.Product">
+        <property name="name" value="#{'iphone11Pro'}"/>
+        <property name="price" value="#{productInfo.calculatePrice()}"/>
+        <property name="category" value="#{category}"/>
+    </bean>
+
+    <bean id="productInfo" class="imooc.demo4.ProductInfo"/>
+
+
+
+</beans>
